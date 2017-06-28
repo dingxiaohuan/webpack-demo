@@ -1,13 +1,14 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const extractSass = new ExtractTextPlugin({
-    filename: '[name].[contenthash].css'
+    filename: 'style/[name].[contenthash].css'
 });
 const path = require('path');
 module.exports = {
     entry: path.resolve(__dirname,'sass/app.scss'),
     output: {
-        filename: "bundle.extractText.js"
+        filename: "bundle.extractText.js",
+        path: path.resolve(__dirname,'dist')
     },
     module:{
         rules:[
