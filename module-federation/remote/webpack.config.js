@@ -1,6 +1,6 @@
 let path = require("path");
 let HtmlWebpackPlugin = require("html-webpack-plugin");
-// const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
 module.exports = {
   context: __dirname,
@@ -33,6 +33,19 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./index.html"),
+    }),
+    new ModuleFederationPlugin({
+      name: "remote",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./NewList": "./NewList.js",
+      },
+      shares: {
+        react: {
+          singleton: true
+        },
+        "react-dom": { singleton: true }
+      },
     }),
   ],
 };
