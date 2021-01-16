@@ -35,7 +35,8 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         remote: 'remote@http://localhost:3000/remoteEntry.js'
-      }
+      },
+      shared: ['react', 'react-dom']
     })
   ],
 };

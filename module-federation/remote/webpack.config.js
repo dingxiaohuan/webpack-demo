@@ -39,6 +39,11 @@ module.exports = {
       exposes: {
         "./NewList": "./NewList",
       },
+      // shared: ["react", "react-dom"],
+      shared: {
+        react: { singleton: true },
+        "react-dom": { singleton: true },
+      },
     }),
   ],
 };
