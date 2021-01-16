@@ -10,8 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
   },
   devServer: {
-    port: 8000,
-    publicPath: path.resolve(__dirname, "dist"),
+    port: 8000
   },
   module: {
     rules: [
@@ -36,14 +35,7 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         remote: 'remote@http://localhost:3000/remoteEntry.js'
-      },
-      // shares: ['react', 'react-dom']
-      shares: {
-        react: {
-          singleton: true
-        },
-        "react-dom": { singleton: true }
-      },
+      }
     })
   ],
 };

@@ -6,7 +6,7 @@ module.exports = {
   context: __dirname,
   mode: "development",
   entry: path.resolve(__dirname, "./index.js"),
-  devtool: "source-map",
+  devtool: false,
   output: {
     // publicPath: "http://localhost:3000",
     path: path.resolve(__dirname, "dist"),
@@ -14,7 +14,6 @@ module.exports = {
   },
   devServer: {
     port: 3000,
-    publicPath: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
@@ -35,16 +34,10 @@ module.exports = {
       template: path.resolve(__dirname, "./index.html"),
     }),
     new ModuleFederationPlugin({
-      name: "remote",
       filename: "remoteEntry.js",
+      name: "remote",
       exposes: {
-        "./NewList": "./NewList.js",
-      },
-      shares: {
-        react: {
-          singleton: true
-        },
-        "react-dom": { singleton: true }
+        "./NewList": "./NewList",
       },
     }),
   ],
